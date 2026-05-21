@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>MelodyHub — Project Report (Phase 2)</title>
+<style>
+  @page { size: A4; margin: 2.2cm; }
+  * { box-sizing: border-box; }
+  body {
+    font-family: "Calibri", "Segoe UI", Arial, sans-serif;
+    font-size: 11.5pt;
+    line-height: 1.55;
+    color: #1a1a1a;
+    margin: 0;
+  }
+  h1, h2, h3 { color: #117a37; line-height: 1.25; }
+  h1 { font-size: 22pt; }
+  h2 {
+    font-size: 16pt;
+    border-bottom: 2px solid #1db954;
+    padding-bottom: 4px;
+    margin-top: 26px;
+  }
+  h3 { font-size: 12.5pt; color: #0c5c29; margin-bottom: 2px; }
+  p { margin: 6px 0; text-align: justify; }
+  ul { margin: 6px 0 6px 18px; }
+  li { margin: 3px 0; }
+  table { border-collapse: collapse; width: 100%; margin: 10px 0; font-size: 10.5pt; }
+  th, td { border: 1px solid #bbb; padding: 6px 9px; text-align: left; vertical-align: top; }
+  th { background: #e8f7ee; color: #0c5c29; }
+  code, pre { font-family: "Consolas", "Courier New", monospace; }
+  pre {
+    background: #f4f6f8;
+    border: 1px solid #d8dde2;
+    border-left: 4px solid #1db954;
+    padding: 10px 12px;
+    font-size: 9.5pt;
+    line-height: 1.4;
+    white-space: pre-wrap;
+    overflow-wrap: break-word;
+  }
+  .cover {
+    text-align: center;
+    page-break-after: always;
+    padding-top: 90px;
+  }
+  .cover .sub { font-size: 13pt; color: #444; margin: 4px 0; }
+  .cover .title {
+    font-size: 40pt;
+    font-weight: 800;
+    color: #117a37;
+    margin: 18px 0 4px;
+    letter-spacing: -1px;
+  }
+  .cover .tag { font-size: 14pt; color: #666; font-style: italic; margin-bottom: 50px; }
+  .cover .meta {
+    display: inline-block;
+    text-align: left;
+    margin-top: 40px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 18px 28px;
+    background: #fafafa;
+  }
+  .cover .meta div { margin: 5px 0; font-size: 12pt; }
+  .cover .meta b { color: #117a37; display: inline-block; min-width: 130px; }
+  .note {
+    background: #fffbe6;
+    border: 1px solid #f0d878;
+    border-radius: 6px;
+    padding: 8px 12px;
+    font-size: 10pt;
+    color: #6b5800;
+  }
+  .shot {
+    border: 2px dashed #1db954;
+    border-radius: 8px;
+    background: #f4fbf6;
+    color: #117a37;
+    text-align: center;
+    padding: 44px 12px;
+    margin: 12px 0;
+    font-size: 11pt;
+    font-weight: 600;
+  }
+  .pagebreak { page-break-before: always; }
+  .small { font-size: 9.5pt; color: #666; }
+</style>
+</head>
+<body>
+
+<!-- ============ COVER / TITLE PAGE ============ -->
+<div class="cover">
+  <div class="sub">Lebanese International University</div>
+  <div class="sub">Department of Computer Science and Information Technology</div>
+  <div class="sub">CSCI390 — Web Programming</div>
+
+  <div class="title">MelodyHub</div>
+  <div class="tag">A Modern Music Streaming Web Application</div>
+
+  <div class="sub"><b>Project Report — Phase 2</b></div>
+
+  <div class="meta">
+    <div><b>Submitted by:</b> [Your Full Name(s)]</div>
+    <div><b>Student ID:</b> 52220031</div>
+    <div><b>Group:</b> [Group name / members]</div>
+    <div><b>Course:</b> CSCI390 — Web Programming</div>
+    <div><b>Semester:</b> Spring 2025-2026</div>
+    <div><b>Instructor:</b> [Instructor name]</div>
+    <div><b>Submission date:</b> May 2026</div>
+  </div>
+</div>
+
+<!-- ============ ABSTRACT ============ -->
+<h2>1. Abstract</h2>
+<p>
+  <b>MelodyHub</b> is a responsive, single-page music streaming web application developed
+  for Phase 2 of the CSCI390 Web Programming course. Building on the static HTML/CSS/JavaScript
+  site delivered in Phase 1, this phase migrates the entire project to a modern
+  <b>ReactJS</b> architecture powered by the <b>Vite</b> build tool and <b>React Router</b>
+  for client-side navigation.
+</p>
+<p>
+  The application presents a polished, music-discovery interface featuring an animated landing
+  hero, a grid of trending artists, a genre-browsing experience covering ten musical styles,
+  and an interactive contact form. The user interface emphasizes a premium, glassmorphic visual
+  style with animated gradients, smooth transitions, and a fully responsive layout that adapts
+  from desktop to mobile, including a collapsible hamburger navigation menu. The project
+  demonstrates component-based design, controlled form handling, version control with Git/GitHub,
+  and cloud deployment on Vercel.
+</p>
+
+<!-- ============ INTRODUCTION ============ -->
+<h2>2. Introduction &amp; Objectives</h2>
+<p>
+  Music streaming platforms are among the most widely used web applications today. MelodyHub
+  models such a platform's front end to practice real-world web development. The objectives of
+  this phase are to:
+</p>
+<ul>
+  <li>Apply web design and development principles using ReactJS as a frontend framework.</li>
+  <li>Understand and implement responsive web design and modern UI/UX practices.</li>
+  <li>Demonstrate version control and deployment skills using Git, GitHub, and Vercel.</li>
+  <li>Convert a multi-file static site into a maintainable, component-based single-page application.</li>
+</ul>
+
+<!-- ============ SYSTEM DESIGN ============ -->
+<h2>3. System Design</h2>
+
+<h3>3.1 Architecture Overview</h3>
+<p>
+  MelodyHub is a <b>Single-Page Application (SPA)</b>. A single HTML document
+  (<code>index.html</code>) loads the React runtime, which mounts the application into a root
+  DOM node. <b>React Router</b> then swaps page components in and out based on the URL — without
+  full page reloads — giving a fast, app-like experience. Styling is handled by a single global
+  stylesheet (<code>index.css</code>) ported and extended from Phase 1.
+</p>
+
+<h3>3.2 Component Hierarchy</h3>
+<pre>
+main.jsx
+ └─ BrowserRouter
+     └─ App
+         ├─ Loader          (animated splash on first load)
+         ├─ Navbar          (logo, links, scroll effect, mobile hamburger)
+         ├─ main
+         │   └─ Routes
+         │       ├─ "/"        -> Home     (hero, trending artists, genres)
+         │       ├─ "/about"   -> About    (mission, tech stack, course info)
+         │       ├─ "/genres"  -> Genres   (10 genres, trending playlists)
+         │       └─ "/contact" -> Contact  (form, info cards, socials)
+         └─ Footer          (brand, social links, copyright)
+</pre>
+
+<h3>3.3 Page Structure (4 Pages)</h3>
+<table>
+  <tr><th>Route</th><th>Page</th><th>Description</th></tr>
+  <tr><td><code>/</code></td><td>Home</td><td>Landing hero with call-to-action, statistics, a grid of trending artists, and a genre preview.</td></tr>
+  <tr><td><code>/about</code></td><td>About</td><td>Project mission, design philosophy, technology stack badges, and course/group information.</td></tr>
+  <tr><td><code>/genres</code></td><td>Genres</td><td>Browsable grid of ten music genres plus curated trending playlists.</td></tr>
+  <tr><td><code>/contact</code></td><td>Contact</td><td>Controlled contact form with success feedback, contact info cards, and social links.</td></tr>
+</table>
+
+<h3>3.4 Responsive Design</h3>
+<p>
+  The layout uses CSS Flexbox and Grid with relative units. Media queries at <b>768px</b> and
+  <b>480px</b> reflow multi-column grids into single columns, and the desktop navigation collapses
+  into an animated hamburger menu on smaller screens. The navbar is scroll-aware: its background
+  becomes opaque after the user scrolls past 50 pixels.
+</p>
+
+<!-- ============ TECHNOLOGIES ============ -->
+<h2 class="pagebreak">4. Technologies Used</h2>
+<table>
+  <tr><th>Technology</th><th>Role in the Project</th></tr>
+  <tr><td><b>React 18</b></td><td>Core UI library; builds the interface from reusable components.</td></tr>
+  <tr><td><b>Vite</b></td><td>Fast build tool and development server with hot-module reloading.</td></tr>
+  <tr><td><b>React Router v6</b></td><td>Client-side routing between the four pages.</td></tr>
+  <tr><td><b>JavaScript (ES6+)</b></td><td>Application logic, state, and event handling.</td></tr>
+  <tr><td><b>CSS3</b></td><td>Custom styling: gradients, glassmorphism (backdrop blur), animations, responsive media queries.</td></tr>
+  <tr><td><b>HTML5</b></td><td>Semantic markup and the SPA entry document.</td></tr>
+  <tr><td><b>Font Awesome 6</b></td><td>Vector icon set used throughout the UI.</td></tr>
+  <tr><td><b>Google Fonts (Inter)</b></td><td>Modern, legible typeface.</td></tr>
+  <tr><td><b>Git &amp; GitHub</b></td><td>Version control and source code hosting.</td></tr>
+  <tr><td><b>Vercel</b></td><td>Cloud platform for continuous deployment and hosting.</td></tr>
+</table>
+
+<!-- ============ CODE SNIPPETS ============ -->
+<h2>5. Code Snippets (Key Parts)</h2>
+
+<h3>5.1 Application Routing — App.jsx</h3>
+<p>React Router maps each URL to a page component, all wrapped in a shared layout:</p>
+<pre>
+export default function App() {
+  const [loading, setLoading] = useState(true)
+
+  useEffect(() =&gt; {
+    const t = setTimeout(() =&gt; setLoading(false), 1200)
+    return () =&gt; clearTimeout(t)
+  }, [])
+
+  return (
+    &lt;&gt;
+      &lt;Loader hidden={!loading} /&gt;
+      &lt;Navbar /&gt;
+      &lt;main&gt;
+        &lt;Routes&gt;
+          &lt;Route path="/" element={&lt;Home /&gt;} /&gt;
+          &lt;Route path="/about" element={&lt;About /&gt;} /&gt;
+          &lt;Route path="/genres" element={&lt;Genres /&gt;} /&gt;
+          &lt;Route path="/contact" element={&lt;Contact /&gt;} /&gt;
+          &lt;Route path="*" element={&lt;Home /&gt;} /&gt;
+        &lt;/Routes&gt;
+      &lt;/main&gt;
+      &lt;Footer /&gt;
+    &lt;/&gt;
+  )
+}
+</pre>
+
+<h3>5.2 Scroll-Aware Navbar with Mobile Menu — Navbar.jsx</h3>
+<pre>
+const [scrolled, setScrolled] = useState(false)
+const [open, setOpen] = useState(false)
+
+useEffect(() =&gt; {
+  const onScroll = () =&gt; setScrolled(window.scrollY &gt; 50)
+  window.addEventListener('scroll', onScroll)
+  return () =&gt; window.removeEventListener('scroll', onScroll)
+}, [])
+
+return (
+  &lt;nav className={`navbar${scrolled ? ' scrolled' : ''}`}&gt;
+    &lt;ul className={`nav-links${open ? ' open' : ''}`}&gt; ... &lt;/ul&gt;
+    &lt;div className="hamburger" onClick={() =&gt; setOpen(o =&gt; !o)}&gt; ... &lt;/div&gt;
+  &lt;/nav&gt;
+)
+</pre>
+
+<h3>5.3 Controlled Contact Form — Contact.jsx</h3>
+<pre>
+const [name, setName] = useState('')
+const [submitted, setSubmitted] = useState(false)
+
+const handleSubmit = (e) =&gt; {
+  e.preventDefault()
+  setSubmitted(true)
+  setName(''); setEmail(''); setMessage('')
+}
+
+&lt;form onSubmit={handleSubmit}&gt;
+  {submitted &amp;&amp; &lt;div className="form-success"&gt;Thanks! Your message has been sent.&lt;/div&gt;}
+  &lt;input value={name} onChange={(e) =&gt; setName(e.target.value)} required /&gt;
+  &lt;button type="submit"&gt;Send Message&lt;/button&gt;
+&lt;/form&gt;
+</pre>
+
+<h3>5.4 SPA Deployment Config — vercel.json</h3>
+<p>Rewrites all paths to the SPA entry so client-side routes work after a page refresh:</p>
+<pre>
+{ "rewrites": [{ "source": "/(.*)", "destination": "/" }] }
+</pre>
+
+<!-- ============ DEPLOYMENT ============ -->
+<h2 class="pagebreak">6. Version Control &amp; Deployment</h2>
+<p>
+  The project is tracked with <b>Git</b>, with commit history hosted on <b>GitHub</b>. Deployment
+  uses <b>Vercel</b>, which connects directly to the GitHub repository: every push triggers an
+  automatic cloud build (<code>npm install</code> + <code>vite build</code>) and redeploys the
+  live site. This means the production build runs on Vercel's servers, not the developer's machine.
+</p>
+<ul>
+  <li>Vercel auto-detects the Vite framework — zero manual configuration.</li>
+  <li><code>vercel.json</code> ensures deep links such as <code>/genres</code> resolve correctly.</li>
+  <li>Continuous deployment: pushing to the main branch redeploys automatically.</li>
+</ul>
+
+<!-- ============ SCREENSHOTS ============ -->
+<h2>7. Screenshots of the UI</h2>
+<p class="note">
+  Replace each box below with a screenshot of the live deployed site. In Word: click the box,
+  delete it, then Insert &rarr; Pictures. Capture each page on desktop, plus one mobile view.
+</p>
+<div class="shot">[ Screenshot 1 — Home page (hero + trending artists) ]</div>
+<div class="shot">[ Screenshot 2 — About page (mission + tech stack) ]</div>
+<div class="shot">[ Screenshot 3 — Genres page (genre grid) ]</div>
+<div class="shot">[ Screenshot 4 — Contact page (form + info) ]</div>
+<div class="shot">[ Screenshot 5 — Mobile view (hamburger menu open) ]</div>
+
+<!-- ============ REPO LINK ============ -->
+<h2 class="pagebreak">8. Source Code Repository</h2>
+<p><b>GitHub repository (all code, assets, and documentation):</b></p>
+<p><code>https://github.com/[your-username]/melodyhub</code></p>
+<p><b>Live deployment (Vercel):</b></p>
+<p><code>https://melodyhub.vercel.app</code> &nbsp;<span class="small">(update with your actual URLs after pushing and deploying)</span></p>
+
+<!-- ============ CONTRIBUTION ============ -->
+<h2>9. Group Contribution Statement</h2>
+<p>
+  All team members contributed equally to the planning, implementation, and documentation of this
+  project. Specific contributions:
+</p>
+<table>
+  <tr><th>Member</th><th>Contribution</th></tr>
+  <tr><td>[Member 1]</td><td>React component structure, routing, and Home page.</td></tr>
+  <tr><td>[Member 2]</td><td>Responsive CSS, animations, and About / Genres pages.</td></tr>
+  <tr><td>[Member 3]</td><td>Contact form, deployment, README, and this report.</td></tr>
+</table>
+<p class="small">Edit the table above to match your actual group members and their work.</p>
+
+<!-- ============ CONCLUSION ============ -->
+<h2>10. Conclusion</h2>
+<p>
+  MelodyHub Phase 2 successfully migrates a static website into a modern, responsive React
+  single-page application. The project applies component-based architecture, client-side routing,
+  controlled forms, and a responsive, visually polished UI, while practicing professional
+  workflows through Git version control and automated cloud deployment. The result is a
+  maintainable codebase that meets all functional and technical requirements of the assignment
+  and provides a strong foundation for any future phases.
+</p>
+
+</body>
+</html>

@@ -36,3 +36,19 @@ pnpm-debug.log*
 # Misc
 *.local
 .cache/
+
+# Claude Code internal
+.claude/
+
+# Assignment brief (not for public repo)
+*.doc
+*.docx
+
+# Word/Office temp lock files
+~$*
+
+# Phase 1 (legacy static site, superseded by React)
+about.html
+script.js
+style.css
+/images/

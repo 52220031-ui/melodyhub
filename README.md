@@ -4,6 +4,9 @@ A modern music streaming UI built with **React** and **Vite** for CSCI390 Web Pr
 
 > Discover your perfect sound. Millions of tracks, free forever.
 
+🔗 **Live demo:** https://melodyhub-omega.vercel.app
+📂 **Repository:** https://github.com/52220031-ui/melodyhub
+
 ---
 
 ## Project Description
